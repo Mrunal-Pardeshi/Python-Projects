@@ -41,7 +41,7 @@ if __name__ == "__main__":
                 speak("Yes Sir")
                 #Listen for the command
                 with sr.Microphone() as source:
-                    print("Jarvis Activated")
+                    print("Jarvis Activated...")
                     audio = r.listen(source)
             command = r.recognize_google(audio)
 
