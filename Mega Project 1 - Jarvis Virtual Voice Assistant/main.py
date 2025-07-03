@@ -36,6 +36,9 @@ def processCommand(c):
             #Speak the headlines
             for article in articles:
                 speak(article['title'])
+    else:
+        # Let openAI handle the request
+        pass
 
 
 
