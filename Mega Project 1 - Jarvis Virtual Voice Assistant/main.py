@@ -3,14 +3,37 @@ import webbrowser
 import pyttsx3
 import musicLibrary
 import requests
+from gtts import gTTS
+import pygame
+import os
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
 newsapi = "cbac8b4bcb9245dd94759d9836e79326"
 
-def speak(text):
+def old_speak(text):
     engine.say(text)
     engine.runAndWait()
+
+def speak(text):
+    tts = gTTS(text)
+    tts.save('temp.mp3')
+    # Initialize mixer and pygame
+    pygame.init()
+    pygame.mixer.init()
+
+    # Load the MP3 file
+    pygame.mixer.music.load("temp.mp3")
+
+    # Play the music
+    pygame.mixer.music.play()
+
+    # Keep the program running until music ends
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
+
+    pygame.mixer.music.unload()
+    os.remove("temp.mp3")
 
 def processCommand(c):
     if "open google" in c.lower():
@@ -39,6 +62,7 @@ def processCommand(c):
     else:
         # Let openAI handle the request
         pass
+        # it requires a paid version of openAI to integrate the AI 
 
 
 
