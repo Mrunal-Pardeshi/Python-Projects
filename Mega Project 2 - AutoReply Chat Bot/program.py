@@ -6,15 +6,14 @@ import time
 time.sleep(3)
 
 # Step 1: Click on the icon
-pyautogui.click(982, 1050)
+pyautogui.click(985, 1050)
 time.sleep(1)
 
 # Step 2: Select the text by dragging from (553, 139) to (1899, 948)
-pyautogui.moveTo(553, 139)
-pyautogui.mouseDown()
-pyautogui.moveTo(1899, 948, duration=1)  # Smooth movement
-pyautogui.mouseUp()
+pyautogui.moveTo(553,139)
+pyautogui.dragTo(1899, 948, duration=2.0, button='left')
 time.sleep(0.5)
+
 
 # Step 3: Copy to clipboard using Ctrl+C
 pyautogui.hotkey('ctrl', 'c')
